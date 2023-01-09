@@ -21,8 +21,23 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/get")
-    public ResponseEntity getRecipeByID (@PathVariable int recipeID) {
+    public ResponseEntity getRecipeByID (@PathVariable long recipeID) {
         Recipe recipe = recipeService.getRecipeById(recipeID);
+        if (recipe == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(recipe);
+    }
+
+    @PutMapping("/recipe/update")
+    public ResponseEntity updateRecipe (@RequestBody Recipe recipe) {
+        Recipe updateRecipe = recipeService.updateRecipe(recipe.getId(), recipe);
+        return  ResponseEntity.ok(recipe);
+    }
+
+    @DeleteMapping("/recipe/delete")
+    public ResponseEntity deleteRecipe (@PathVariable long recipeID) {
+        Recipe recipe = recipeService.deleteRecipe(recipeID);
         if (recipe == null) {
             return ResponseEntity.notFound().build();
         }

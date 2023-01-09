@@ -7,6 +7,10 @@ public interface IngredientService {
 
     public Ingredient addIngredient(Ingredient ingredient);
 
-    public Ingredient getIngredientByID(int ingredientID);
+    public Ingredient getIngredientByID(long ingredientID);
+
+    public Ingredient updateIngredient (long ingredientID, Ingredient ingredient);
+
+    public Ingredient deleteIngredient(long ingredientID);
 
 }
