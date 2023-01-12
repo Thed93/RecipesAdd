@@ -14,15 +14,15 @@ public class IngredientsController {
         this.ingredientService = ingredientService;
     }
 
-    @PostMapping("/ingredients/add")
+    @PostMapping("/ingredients")
     public ResponseEntity createIngredient(@RequestBody Ingredient ingredient) {
         Ingredient createIngredient = ingredientService.addIngredient(ingredient);
         return ResponseEntity.ok(createIngredient);
     }
 
-    @GetMapping("/ingredients/get")
-    public ResponseEntity getIngredient (@PathVariable int ingredientId) {
-        Ingredient ingredient = ingredientService.getIngredientByID(ingredientId);
+    @GetMapping("/ingredients/{id}")
+    public ResponseEntity getIngredient (@PathVariable int id) {
+        Ingredient ingredient = ingredientService.getIngredientByID(id);
         if (ingredient == null) {
             return ResponseEntity.notFound().build();
         }

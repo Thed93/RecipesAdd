@@ -14,15 +14,15 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @PostMapping("/recipe/add")
+    @PostMapping("/recipe")
     public ResponseEntity createRecipe (@RequestBody Recipe recipe) {
         Recipe createRecipe = recipeService.addRecipe(recipe);
         return ResponseEntity.ok(recipe);
     }
 
-    @GetMapping("/recipe/get")
-    public ResponseEntity getRecipeByID (@PathVariable int recipeID) {
-        Recipe recipe = recipeService.getRecipeById(recipeID);
+    @GetMapping("/recipe/{id}")
+    public ResponseEntity getRecipeByID (@PathVariable int id) {
+        Recipe recipe = recipeService.getRecipeById(id);
         if (recipe == null) {
             return ResponseEntity.notFound().build();
         }
