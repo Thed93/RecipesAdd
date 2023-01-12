@@ -14,30 +14,30 @@ public class IngredientsController {
         this.ingredientService = ingredientService;
     }
 
-    @PostMapping("/ingredients/add")
+    @PostMapping("/ingredients")
     public ResponseEntity createIngredient(@RequestBody Ingredient ingredient) {
         Ingredient createIngredient = ingredientService.addIngredient(ingredient);
         return ResponseEntity.ok(createIngredient);
     }
 
-    @GetMapping("/ingredients/get")
-    public ResponseEntity getIngredient (@PathVariable long ingredientId) {
-        Ingredient ingredient = ingredientService.getIngredientByID(ingredientId);
+    @GetMapping("/ingredients/{id}")
+    public ResponseEntity getIngredient (@PathVariable long id) {
+        Ingredient ingredient = ingredientService.getIngredientByID(id);
         if (ingredient == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(ingredient);
     }
 
-    @PutMapping("/ingredients/update")
+    @PutMapping("/ingredients/{id}")
     public ResponseEntity updateIngredient (@RequestBody Ingredient ingredient) {
         Ingredient updateIngredient = ingredientService.updateIngredient(ingredient.getId(), ingredient);
         return ResponseEntity.ok(updateIngredient);
     }
 
-    @DeleteMapping("/ingredients/delete")
-    public ResponseEntity deleteIngredient (@PathVariable long ingredientId) {
-        Ingredient ingredient = ingredientService.deleteIngredient(ingredientId);
+    @DeleteMapping("/ingredients/{id}")
+    public ResponseEntity deleteIngredient (@PathVariable long id) {
+        Ingredient ingredient = ingredientService.deleteIngredient(id);
         if (ingredient == null) {
             return ResponseEntity.notFound().build();
         }
