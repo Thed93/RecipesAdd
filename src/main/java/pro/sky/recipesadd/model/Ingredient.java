@@ -1,5 +1,9 @@
 package pro.sky.recipesadd.model;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+
 public class Ingredient {
 
     private long id;
@@ -14,16 +18,5 @@ public class Ingredient {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 

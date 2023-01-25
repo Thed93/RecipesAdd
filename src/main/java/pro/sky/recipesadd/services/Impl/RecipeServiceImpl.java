@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
-    private final Map<Long, Recipe> recipes = new HashMap<Long, Recipe>();
+    private final Map<Long, Recipe> recipes = new HashMap<>();
 
     private long id;
 
@@ -20,13 +20,13 @@ public class RecipeServiceImpl implements RecipeService {
         return recipe;
     }
     @Override
-    public Recipe getRecipeById (long recipeID) {
-        return recipes.get(recipeID);
+    public Recipe getRecipeById (long recipeId) {
+        return recipes.get(recipeId);
     }
 
     @Override
-    public Recipe updateRecipe(long recipeID, Recipe recipe) {
-        recipes.put(recipeID,recipe);
+    public Recipe updateRecipe(long recipeId, Recipe recipe) {
+        recipes.put(recipeId,recipe);
         return recipe;
     }
 
