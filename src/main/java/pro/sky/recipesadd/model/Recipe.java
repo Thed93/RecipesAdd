@@ -14,7 +14,7 @@ public class Recipe {
 
     private int time;
 
-    private IngredientService ingredients;
+    private Ingredient ingredient;
 
     private String steps;
 
