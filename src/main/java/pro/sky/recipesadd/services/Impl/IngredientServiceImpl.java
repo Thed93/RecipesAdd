@@ -1,5 +1,6 @@
 package pro.sky.recipesadd.services.Impl;
 
+import lombok.Data;
 import org.springframework.stereotype.Service;
 import pro.sky.recipesadd.model.Ingredient;
 import pro.sky.recipesadd.services.IngredientService;

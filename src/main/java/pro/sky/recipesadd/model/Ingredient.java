@@ -1,8 +1,10 @@
 package pro.sky.recipesadd.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @AllArgsConstructor
+@Data
 
 public class Ingredient {
 
@@ -13,10 +15,6 @@ public class Ingredient {
     private int amount;
 
     private String measureUnit;
-
-    public long getId() {
-        return id;
-    }
 
 }
 

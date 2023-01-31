@@ -1,8 +1,10 @@
 package pro.sky.recipesadd.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import pro.sky.recipesadd.services.IngredientService;
 @AllArgsConstructor
+@Data
 
 public class Recipe {
 
@@ -15,9 +17,5 @@ public class Recipe {
     private IngredientService ingredients;
 
     private String steps;
-
-    public long getId() {
-        return id;
-    }
 
 }
