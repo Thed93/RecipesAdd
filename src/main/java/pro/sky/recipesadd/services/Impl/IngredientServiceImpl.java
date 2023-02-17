@@ -8,10 +8,6 @@ import pro.sky.recipesadd.model.Ingredient;
 import pro.sky.recipesadd.services.FilesService;
 import pro.sky.recipesadd.services.IngredientService;
 
-import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.TreeMap;
 
 @Service
@@ -50,7 +46,7 @@ public class IngredientServiceImpl implements IngredientService {
         return ingredients.remove(ingredientID);
     }
 
-    @PostConstruct
+    @Override
     public void inIt(){
         readFromFile();
     }
