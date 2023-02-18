@@ -1,11 +1,19 @@
 package pro.sky.recipesadd.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.recipesadd.model.Recipe;
 import pro.sky.recipesadd.services.RecipeService;
 
 @RestController
+@Tag(name = "Рецепты", description = "Добавление, удаление и обновление рецептов, а так же поиск по ID")
 public class RecipeController {
 
     private final RecipeService recipeService;
@@ -15,12 +23,42 @@ public class RecipeController {
     }
 
     @PostMapping("/recipe")
+    @Operation(
+            summary = "Добавление рецепта"
+    )
+    @ApiResponses (value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт добавлен",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    array = @ArraySchema (schema = @Schema(implementation = Recipe.class))
+                            )
+                    }
+            )
+    })
     public ResponseEntity createRecipe (@RequestBody Recipe recipe) {
         Recipe createRecipe = recipeService.addRecipe(recipe);
         return ResponseEntity.ok(recipe);
     }
 
     @GetMapping("/recipe/{id}")
+    @Operation(
+            summary = "Поиск рецепта по ID"
+    )
+    @ApiResponses (value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт найден",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    array = @ArraySchema (schema = @Schema(implementation = Recipe.class))
+                            )
+                    }
+            )
+    })
     public ResponseEntity getRecipeByID (@PathVariable long id) {
         Recipe recipe = recipeService.getRecipeById(id);
         if (recipe == null) {
@@ -30,12 +68,42 @@ public class RecipeController {
     }
 
     @PutMapping("/recipe/{id}")
+    @Operation(
+            summary = "Обновление рецепта"
+    )
+    @ApiResponses (value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт обновлен",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    array = @ArraySchema (schema = @Schema(implementation = Recipe.class))
+                            )
+                    }
+            )
+    })
     public ResponseEntity updateRecipe (@RequestBody Recipe recipe) {
         Recipe updateRecipe = recipeService.updateRecipe(recipe.getId(), recipe);
         return  ResponseEntity.ok(recipe);
     }
 
-    @DeleteMapping("/recipe/{id}}")
+    @DeleteMapping("/recipe/{id}")
+    @Operation(
+            summary = "Удаление рецепта"
+    )
+    @ApiResponses (value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт удален",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    array = @ArraySchema (schema = @Schema(implementation = Recipe.class))
+                            )
+                    }
+            )
+    })
     public ResponseEntity deleteRecipe (@PathVariable long id) {
         Recipe recipe = recipeService.deleteRecipe(id);
         if (recipe == null) {
