@@ -1,17 +1,18 @@
 package pro.sky.recipesadd.services;
 
+import pro.sky.recipesadd.Exceptions.WrongIngredientException;
 import pro.sky.recipesadd.model.Ingredient;
 
 public interface IngredientService {
 
 
-    public Ingredient addIngredient(Ingredient ingredient);
+    public Ingredient addIngredient(Ingredient ingredient) throws WrongIngredientException;
 
     public Ingredient getIngredientByID(long ingredientID);
 
-    public Ingredient updateIngredient (long ingredientID, Ingredient ingredient);
+    public Ingredient updateIngredient (long ingredientID, Ingredient ingredient) throws WrongIngredientException;
 
     public Ingredient deleteIngredient(long ingredientID);
 
-    void inIt();
+    void inIt() throws WrongIngredientException;
 }
