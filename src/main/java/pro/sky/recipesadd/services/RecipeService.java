@@ -7,6 +7,8 @@ public interface RecipeService {
     public Recipe addRecipe (Recipe recipe);
 
 
+    void inIt();
+
     public Recipe getRecipeById (long recipeID);
 
     public Recipe updateRecipe (long recipeID, Recipe recipe);
