@@ -9,8 +9,11 @@ import pro.sky.recipesadd.model.Ingredient;
 import pro.sky.recipesadd.services.FilesService;
 import pro.sky.recipesadd.services.IngredientService;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -76,9 +79,6 @@ public class IngredientServiceImpl implements IngredientService {
         }
     }
 
-    public Path createIngredient (Ingredient ingredient){
-        TreeMap<Long, Ingredient> newIngredient = ingredients.getOrDefault();
-        for (Ingredient ingredient1 : ingredients)
-    }
-
 }
+
+

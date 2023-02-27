@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.recipesadd.Exceptions.WrongIngredientException;
 import pro.sky.recipesadd.model.Ingredient;
 import pro.sky.recipesadd.model.Recipe;
 import pro.sky.recipesadd.services.IngredientService;
@@ -40,7 +41,7 @@ public class IngredientsController {
             )
     })
 
-    public ResponseEntity createIngredient(@RequestBody Ingredient ingredient) {
+    public ResponseEntity createIngredient(@RequestBody Ingredient ingredient) throws WrongIngredientException {
         Ingredient createIngredient = ingredientService.addIngredient(ingredient);
         return ResponseEntity.ok(createIngredient);
     }
@@ -85,7 +86,7 @@ public class IngredientsController {
                     }
             )
     })
-    public ResponseEntity updateIngredient (@RequestBody Ingredient ingredient) {
+    public ResponseEntity updateIngredient (@RequestBody Ingredient ingredient) throws WrongIngredientException {
         Ingredient updateIngredient = ingredientService.updateIngredient(ingredient.getId(), ingredient);
         return ResponseEntity.ok(updateIngredient);
     }

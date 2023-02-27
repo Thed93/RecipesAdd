@@ -106,6 +106,7 @@ public class FilesServiceImpl implements FilesService {
     public File getRecipeDataFile() {
         return new File(dataFilePathForRecipes + "/" + dataFilePathForRecipes);
     }
+
     @Override
     public Path createIngredientsTempFile(String suffix) throws WrongIngredientException {
         try {
