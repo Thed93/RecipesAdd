@@ -3,6 +3,8 @@ package pro.sky.recipesadd.services;
 import pro.sky.recipesadd.Exceptions.WrongRecipeException;
 import pro.sky.recipesadd.model.Recipe;
 
+import java.util.Collection;
+
 public interface RecipeService {
 
     public Recipe addRecipe (Recipe recipe) throws WrongRecipeException;
@@ -15,4 +17,6 @@ public interface RecipeService {
     public Recipe updateRecipe (long recipeID, Recipe recipe) throws WrongRecipeException;
 
     public Recipe deleteRecipe (long recipeID);
+
+    Collection<Recipe> getAll();
 }

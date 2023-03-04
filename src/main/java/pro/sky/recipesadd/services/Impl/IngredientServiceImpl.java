@@ -9,14 +9,9 @@ import pro.sky.recipesadd.model.Ingredient;
 import pro.sky.recipesadd.services.FilesService;
 import pro.sky.recipesadd.services.IngredientService;
 
-import java.io.IOException;
-import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
 @Service
@@ -32,8 +27,7 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public Ingredient addIngredient(Ingredient ingredient) throws WrongIngredientException {
-        ingredients.put(id, ingredient);
-        id++;
+        ingredients.put(ingredient.getId(), ingredient);
         saveToFile();
         return ingredient;
     }
@@ -49,6 +43,7 @@ public class IngredientServiceImpl implements IngredientService {
         saveToFile();
         return ingredient;
     }
+
 
     @Override
     public Ingredient deleteIngredient(long ingredientID) {
