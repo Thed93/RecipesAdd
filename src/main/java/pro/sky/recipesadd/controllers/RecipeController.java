@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.recipesadd.Exceptions.WrongRecipeException;
 import pro.sky.recipesadd.model.Recipe;
 import pro.sky.recipesadd.services.RecipeService;
 
@@ -38,7 +39,7 @@ public class RecipeController {
                     }
             )
     })
-    public ResponseEntity createRecipe (@RequestBody Recipe recipe) {
+    public ResponseEntity createRecipe (@RequestBody Recipe recipe) throws WrongRecipeException {
         Recipe createRecipe = recipeService.addRecipe(recipe);
         return ResponseEntity.ok(recipe);
     }
@@ -83,7 +84,7 @@ public class RecipeController {
                     }
             )
     })
-    public ResponseEntity updateRecipe (@RequestBody Recipe recipe) {
+    public ResponseEntity updateRecipe (@RequestBody Recipe recipe) throws WrongRecipeException {
         Recipe updateRecipe = recipeService.updateRecipe(recipe.getId(), recipe);
         return  ResponseEntity.ok(recipe);
     }
