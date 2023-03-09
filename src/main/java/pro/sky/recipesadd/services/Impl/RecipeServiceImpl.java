@@ -4,13 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import pro.sky.recipesadd.Exceptions.WrongIngredientException;
 import pro.sky.recipesadd.Exceptions.WrongRecipeException;
-import pro.sky.recipesadd.model.Ingredient;
 import pro.sky.recipesadd.model.Recipe;
 import pro.sky.recipesadd.services.FilesService;
 import pro.sky.recipesadd.services.RecipeService;
 
+import java.util.Collection;
 import java.util.TreeMap;
 
 @Service
@@ -65,6 +64,10 @@ public class RecipeServiceImpl implements RecipeService {
         } catch (JsonProcessingException e) {
             throw new WrongRecipeException("Некорректный рецепт");
         }
+    }
+    @Override
+    public Collection<Recipe> getAll() {
+        return recipes.values();
     }
 
 }

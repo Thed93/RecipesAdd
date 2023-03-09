@@ -1,6 +1,8 @@
 package pro.sky.recipesadd.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import pro.sky.recipesadd.Exceptions.WrongRecipeException;
 import pro.sky.recipesadd.model.Recipe;
 import pro.sky.recipesadd.services.RecipeService;
+
+import java.util.Collection;
 
 @RestController
 @Tag(name = "Рецепты", description = "Добавление, удаление и обновление рецептов, а так же поиск по ID")
@@ -60,12 +64,33 @@ public class RecipeController {
                     }
             )
     })
+    @Parameters(value = {
+            @Parameter(name = "id",
+            example = "натуральное число")
+    })
     public ResponseEntity getRecipeByID (@PathVariable long id) {
         Recipe recipe = recipeService.getRecipeById(id);
         if (recipe == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(recipe);
+    }
+
+    @GetMapping
+    @Operation(summary = "Получение всех рецептов", description = "Поиск без параметров")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепты получены",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Recipe.class)
+                            )
+                    }
+            )})
+    public Collection<Recipe> getAll() {
+        return this.recipeService.getAll();
     }
 
     @PutMapping("/recipe/{id}")

@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pro.sky.recipesadd.services.IngredientService;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
@@ -16,8 +20,8 @@ public class Recipe {
 
     private int time;
 
-    private Ingredient ingredient;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
-    private String steps;
+    private List<String> steps = new ArrayList<>();
 
 }

@@ -49,6 +49,20 @@ public class FilesController {
             return ResponseEntity.noContent().build();
         }
     }
+    @GetMapping("/exportRecipes/txt")
+    public ResponseEntity <InputStreamResource> downloadRecipeTxt() throws FileNotFoundException {
+        File file = filesService.getRecipeDataFile();
+        if (file.exists()) {
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_PLAIN)
+                    .contentLength(file.length())
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename = \"RecipesLog.txt\"")
+                    .body(resource);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
 
     @PostMapping(value = "/importIngredients", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> uploadIngredientDataFile(@RequestParam MultipartFile file){
