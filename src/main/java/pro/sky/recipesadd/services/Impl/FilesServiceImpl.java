@@ -28,6 +28,11 @@ public class FilesServiceImpl implements FilesService {
     @Value("${name.of.data.file.recipes}")
     private String nameOfDataFileRecipes;
 
+    @Value("${path.to.recipe.txt.file}")
+    private String dataFilePathRecipeTxt;
+    @Value("${name.of.recipe.txt.file}")
+    private String dataFileNameRecipeTxt;
+
 
     @Override
     public boolean saveToIngredientFile(String json){
@@ -125,6 +130,9 @@ public class FilesServiceImpl implements FilesService {
         }
     }
 
-
+    @Override
+    public File getRecipesDataFileTxt() {
+        return new File(dataFileNameRecipeTxt + "/" + dataFileNameRecipeTxt);
+    }
 
 }
