@@ -21,8 +21,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe addRecipe (Recipe recipe) throws WrongRecipeException {
-        recipes.put(id, recipe);
-        id++;
+        recipes.put(recipe.getId(), recipe);
         saveToFile();
         return recipe;
     }
@@ -38,9 +37,13 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe updateRecipe(long recipeId, Recipe recipe) throws WrongRecipeException {
-        recipes.put(recipeId,recipe);
+        Recipe serviceRecipe = recipes.get(id);
+        serviceRecipe.setName(recipe.getName());
+        serviceRecipe.setTime(recipe.getTime());
+        serviceRecipe.setIngredients(recipe.getIngredients());
+        serviceRecipe.setSteps(recipe.getSteps());
         saveToFile();
-        return recipe;
+        return serviceRecipe;
     }
 
     @Override

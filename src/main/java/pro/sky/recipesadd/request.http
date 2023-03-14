@@ -1,0 +1,87 @@
+POST http://localhost:8080/ingredients
+Content-Type: application/json
+{
+"id": 0,
+"name": "Творог",
+"amount": 350,
+"measureUnit": "грамм"
+}
+###
+POST http://localhost:8080/ingredients
+Content-Type: application/json
+{
+"id": 1,
+  "name": "Куриное яйцо",
+  "amount": 2,
+  "measureUnit": "штук"
+}
+###
+POST http://localhost:8080/ingredients
+Content-Type: application/json
+{
+"id": 2,
+  "name": "Пшеничная мука",
+  "amount": 6,
+  "measureUnit": "ст. ложек"
+}
+###
+POST http://localhost:8080/ingredients
+Content-Type: application/json
+{
+"id": 3,
+  "name": "Сахар",
+  "amount": 2,
+  "measureUnit": "ст. ложек"
+}
+###
+
+GET http://localhost:8080/ingredients/0
+
+###
+
+POST http://localhost:8080/recipe
+Content-Type: application/json
+{
+"name" : "Сырники из творога",
+"id" : 0,
+"time" : 30,
+"ingredients" :  [
+{
+"id": 0,
+  "name": "Творог",
+  "amount": 350,
+  "measureUnit": "грамм"
+},
+{
+"id": 1,
+  "name": "Куриное яйцо",
+  "amount": 2,
+  "measureUnit": "штук"
+},
+{
+"id": 2,
+  "name": "Пшеничная мука",
+  "amount": 6,
+  "measureUnit": "ст. ложек"
+},
+{
+"id": 3,
+  "name": "Сахар",
+  "amount": 2,
+  "measureUnit": "ст. ложек"
+}
+  ],
+"steps" : [
+"Всыпьте в творог муку и тщательно перемешайте.",
+ "Поставьте сковороду на средний огонь и налейте в нее подсолнечное масло.",
+ "Слепите несколько небольших шариков из получившейся творожной массы и положите их на тарелку.",
+"Затем по очереди обкатывайте творожные шарики в муке и выкладывайте на сковороду.",
+ "Обжаривайте сырники 1–2 минуты до появления золотистой корочки.",
+"Затем переверните их на другую сторону и также обжарьте до золотистого состояния.",
+ "Повторяйте, пока творог не закончится."
+]
+}
+
+###
+GET http://localhost:8080/recipe/0
+
