@@ -68,7 +68,7 @@ public class RecipeController {
             @Parameter(name = "id",
             example = "натуральное число")
     })
-    public ResponseEntity getRecipeByID (@PathVariable("id") long id) {
+    public ResponseEntity getRecipeByID (@PathVariable long id) {
         Recipe recipe = recipeService.getRecipeById(id);
         if (recipe == null) {
             return ResponseEntity.notFound().build();

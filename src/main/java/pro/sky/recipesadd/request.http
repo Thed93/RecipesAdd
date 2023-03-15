@@ -1,5 +1,6 @@
-POST http://localhost:8080/ingredients
+POST http://localhost:8081/ingredients
 Content-Type: application/json
+
 {
 "id": 0,
 "name": "Творог",
@@ -7,8 +8,9 @@ Content-Type: application/json
 "measureUnit": "грамм"
 }
 ###
-POST http://localhost:8080/ingredients
+POST http://localhost:8081/ingredients
 Content-Type: application/json
+
 {
 "id": 1,
   "name": "Куриное яйцо",
@@ -16,8 +18,9 @@ Content-Type: application/json
   "measureUnit": "штук"
 }
 ###
-POST http://localhost:8080/ingredients
+POST http://localhost:8081/ingredients
 Content-Type: application/json
+
 {
 "id": 2,
   "name": "Пшеничная мука",
@@ -25,8 +28,9 @@ Content-Type: application/json
   "measureUnit": "ст. ложек"
 }
 ###
-POST http://localhost:8080/ingredients
+POST http://localhost:8081/ingredients
 Content-Type: application/json
+
 {
 "id": 3,
   "name": "Сахар",
@@ -35,12 +39,13 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:8080/ingredients/0
+GET http://localhost:8081/ingredients/0
 
 ###
 
-POST http://localhost:8080/recipe
+POST http://localhost:8081/recipe
 Content-Type: application/json
+
 {
 "name" : "Сырники из творога",
 "id" : 0,
@@ -83,5 +88,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/recipe/0
+GET http://localhost:8081/recipe/0
 
