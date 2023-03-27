@@ -10,7 +10,7 @@ import java.util.TreeMap;
 @Data
 @NoArgsConstructor
 
-public class Ingredient extends TreeMap<Long, Ingredient> {
+public class Ingredient {
 
     private long id;
 
@@ -20,16 +20,5 @@ public class Ingredient extends TreeMap<Long, Ingredient> {
 
     private String measureUnit;
 
-
-
-    @Override
-    public Ingredient getOrDefault(Object key, Ingredient defaultValue) {
-        return super.getOrDefault(key, defaultValue);
-    }
-
-    @Override
-    public boolean remove(Object key, Object value) {
-        return super.remove(key, value);
-    }
 }
 

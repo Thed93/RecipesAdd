@@ -26,4 +26,6 @@ public interface FilesService {
     Path createIngredientsTempFile(String suffix) throws WrongIngredientException;
 
     Path createRecipesTempFile(String suffix) throws WrongRecipeException;
+
+    File getRecipesDataFileTxt();
 }
